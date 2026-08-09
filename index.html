@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ESA NODE SOLUTIONS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a0f1c, #111);
+  color: white;
+  scroll-behavior: smooth;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #00f7ff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ff00ff;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 80px 50px;
+  margin: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s;
+}
+
+h1, h2 {
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 300px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== CONTACT ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  background: #00f7ff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* ===== INNOVATION BOX ===== */
+.innovation-box {
+  background: linear-gradient(135deg, #00f7ff, #ff00ff);
+  padding: 20px;
+  border-radius: 15px;
+  color: black;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section {
+    padding: 40px 20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>ESA NODE SOLUTIONS</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+    <a href="#results">Results</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>About the Project</h2>
+  <p>
+    This project focuses on solving real-world challenges aligned with SDG 8 and SDG 12 
+    using AI and IoT technologies for sustainability and efficiency.
+  </p>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section">
+  <h2>Key Features</h2>
+  <ul>
+    <li>Real-time monitoring</li>
+    <li>AI-based prediction</li>
+    <li>Cost optimization</li>
+    <li>Scalable smart system</li>
+  </ul>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="section">
+  <h2>Results & Innovation</h2>
+
+  <p>
+    Achieved 92% prediction accuracy and reduced operational waste by 35%.
+  </p>
+
+  <div class="innovation-box">
+    Innovation: Integration of AI + IoT + SDG mapping for sustainable impact.
+  </div>
+</section>
+
+<!-- CHART -->
+<section class="section">
+  <h2>Performance Analysis</h2>
+  <canvas id="myChart"></canvas>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <h2>Project Demo</h2>
+
+  <div class="gallery">
+    <img src="image1.jpg">
+    <img src="image2.jpg">
+    <img src="image3.jpg">
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section">
+  <h2>Project Demo Video</h2>
+
+  <video width="400" controls>
+    <source src="demo.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Smart SDG Project</p>
+</footer>
+
+<!-- ANIMATION SCRIPT -->
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const position = sec.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 100) {
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
+    }
+  });
+});
+</script>
+
+<!-- CHART SCRIPT -->
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Accuracy', 'Efficiency', 'Cost Saving'],
+    datasets: [{
+      label: 'Project Performance',
+      data: [92, 85, 75],
+      borderWidth: 1
+    }]
+  }
+});
+</script>
+
+</body>
+</html>
